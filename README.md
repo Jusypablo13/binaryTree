@@ -1,60 +1,73 @@
-BinaryTree Project
+# AVL Tree Project
 
-Overview
+## Overview
 
-This project implements a Binary Search Tree (BST) in C++. It includes a BinaryTree class that provides the following functionalities:
+This project implements an AVL Tree in C++. The BinaryTree class supports various AVL Tree functionalities, including automatic balancing through rotations, as well as basic operations like insertion, deletion, and search.
 
-	•	Insertion: Insert new nodes into the tree while maintaining BST properties.
-	•	Search: Find if a specific value exists within the tree.
-	•	Removal: Delete nodes from the tree, ensuring the tree remains a valid BST.
+### Key Features
+
+	•	Insertion: Inserts new nodes while maintaining AVL Tree balance using rotations (single and double).
+	•	Search: Finds if a specific value exists in the tree.
+	•	Removal: Deletes nodes while rebalancing the tree to retain AVL properties.
 	•	Tree Traversals:
 	•	In-order Traversal: Left subtree → Root → Right subtree.
 	•	Pre-order Traversal: Root → Left subtree → Right subtree.
 	•	Post-order Traversal: Left subtree → Right subtree → Root.
 
-Contents
+### AVL Tree Rotations
 
-	•	binaryTree.h: Header file containing the Node struct and BinaryTree class declarations.
-	•	binaryTree.cpp: Source file with implementations of the BinaryTree member functions.
-	•	main.cpp: Sample program to demonstrate the usage of the BinaryTree class.
-	•	Makefile: (Optional) Makefile for compiling the project.
+To keep the tree balanced, the following rotations are implemented:
 
-Getting Started
+	•	Left Rotation: Balances the tree when the right subtree is too tall.
+	•	Right Rotation: Balances the tree when the left subtree is too tall.
+	•	Left-Right Rotation: A combination of left and right rotations for specific imbalances.
+	•	Right-Left Rotation: A combination of right and left rotations for specific imbalances.
 
-Prerequisites
+## Project Contents
 
-	•	C++ compiler supporting C++11 or higher (e.g., GCC, Clang).
-	•	Basic understanding of compiling C++ programs from the command line or using an IDE.
+	•	binaryTree.h: Header file with the Node struct and BinaryTree class declarations.
+	•	binaryTree.cpp: Source file containing BinaryTree class function implementations, including balancing rotations.
+	•	main.cpp: Sample program demonstrating the usage of the BinaryTree class.
+	•	README.md: Documentation file for the project.
+	•	.vscode/: Directory for VS Code workspace settings (optional).
+	•	main.dSYM/: Debug symbols generated during compilation on macOS (optional).
+
+## Getting Started
+
+### Prerequisites
+
+	•	C++ compiler with C++11 or higher (e.g., GCC, Clang).
+	•	Familiarity with compiling C++ programs from the command line or using an IDE.
 
 Compilation Instructions
 
 Using Command Line
 
-Compile the project by including both main.cpp and binaryTree.cpp:
+Compile the project by running:
 
-g++ -std=c++11 -g main.cpp binaryTree.cpp -o binaryTree
+g++ -std=c++11 -g main.cpp binaryTree.cpp -o main
 
-Or using Clang:
+or, if you prefer Clang:
 
-clang++ -std=c++11 -g main.cpp binaryTree.cpp -o binaryTree
+clang++ -std=c++11 -g main.cpp binaryTree.cpp -o main
 
 Using a Makefile
 
-If a Makefile is provided, compile the project by simply running:
+If you have a Makefile in the project directory, you can simply run:
 
 make
 
-This will generate an executable named binaryTree.
+This will generate an executable named main.
 
 Running the Program
 
-After successful compilation, run the executable:
+After compiling, you can run the executable:
 
-./binaryTree
+./main
 
 Usage
 
-The BinaryTree class can be used to create and manipulate a binary search tree. Below is a brief explanation of how to use the class and its functions.
+The BinaryTree class allows you to create and manipulate an AVL tree. Here’s a quick guide to using its functions.
 
 Creating a Tree
 
@@ -66,9 +79,9 @@ tree.root = tree.insert(tree.root, value);
 
 	•	Parameters:
 	•	tree.root: The root of the tree (initially nullptr).
-	•	value: The integer value to insert into the tree.
+	•	value: The integer value to insert.
 
-Searching for a Value
+## Searching for a Value
 
 Node* result = tree.search(tree.root, value);
 if (result != nullptr)
@@ -82,27 +95,17 @@ tree.root = tree.remove(tree.root, value);
 
 	•	Parameters:
 	•	tree.root: The root of the tree.
-	•	value: The integer value to remove from the tree.
+	•	value: The integer value to remove.
 
-Tree Traversals
+## Tree Traversals
 
-In-order Traversal
+	•	In-order Traversal: tree.inorder(tree.root);
+	•	Pre-order Traversal: tree.preorder(tree.root);
+	•	Post-order Traversal: tree.postorder(tree.root);
 
-tree.inorder(tree.root);
-
-Pre-order Traversal
-
-tree.preorder(tree.root);
-
-Post-order Traversal
-
-tree.postorder(tree.root);
-
-Each traversal function prints the node values to the console in the specified order.
+Each traversal function prints node values to the console in the specified order.
 
 Example
-
-Below is an example of how to use the BinaryTree class in a program:
 
 #include <iostream>
 #include "binaryTree.h"
@@ -110,7 +113,7 @@ Below is an example of how to use the BinaryTree class in a program:
 int main() {
     BinaryTree tree;
 
-    // Insert values into the tree
+    // Insert values into the AVL tree
     tree.root = tree.insert(tree.root, 5);
     tree.root = tree.insert(tree.root, 3);
     tree.root = tree.insert(tree.root, 7);
@@ -155,33 +158,37 @@ Project Structure
 ├── binaryTree.h      // Header file with class and struct declarations
 ├── binaryTree.cpp    // Implementation of BinaryTree member functions
 ├── main.cpp          // Main program demonstrating BinaryTree usage
-└── Makefile          // (Optional) Makefile for building the project
+├── README.md         // Project documentation
 
-Functions Description
+Function Descriptions
 
-Node Struct
+## Node Struct
 
-Represents a node in the binary search tree.
+Represents a node in the AVL tree.
 
 	•	Members:
 	•	int data: The value stored in the node.
 	•	Node* left: Pointer to the left child.
 	•	Node* right: Pointer to the right child.
+	•	int height: The height of the node, important for balancing.
 
-BinaryTree Class
+## BinaryTree Class
 
-Manages the binary search tree operations.
+### Manages the AVL tree operations and balancing.
 
-Members
-
+	•	Members:
 	•	Node* root: Pointer to the root node of the tree.
-
-Member Functions
-
+	•	Member Functions:
 	•	Constructor: Initializes root to nullptr.
-	•	Node* insert(Node* node, int value): Inserts a new node with the given value into the tree rooted at node.
-	•	Node* search(Node* node, int value): Searches for a node with the given value in the tree rooted at node.
-	•	Node* remove(Node* node, int value): Removes the node with the given value from the tree rooted at node.
-	•	void inorder(Node* node): Performs an in-order traversal starting from node.
-	•	void preorder(Node* node): Performs a pre-order traversal starting from node.
-	•	void postorder(Node* node): Performs a post-order traversal starting from node.
+	•	Node* insert(Node* node, int value): Inserts a new node and balances the AVL tree if needed.
+	•	Node* search(Node* node, int value): Searches for a node with the specified value.
+	•	Node* remove(Node* node, int value): Removes a node and rebalances the AVL tree if needed.
+	•	Rotations:
+	•	Node* rightRotate(Node* y): Performs a single right rotation.
+	•	Node* leftRotate(Node* x): Performs a single left rotation.
+	•	Node* leftRightRotate(Node* node): Performs a double left-right rotation.
+	•	Node* rightLeftRotate(Node* node): Performs a double right-left rotation.
+	•	Traversals:
+	•	void inorder(Node* node): In-order traversal from node.
+	•	void preorder(Node* node): Pre-order traversal from node.
+	•	void postorder(Node* node): Post-order traversal from node.
