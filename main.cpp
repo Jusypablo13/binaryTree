@@ -14,33 +14,33 @@ int main(){
     tree.root = tree.insert(tree.root, 6);
     tree.root = tree.insert(tree.root, 8);
     
-    cout << "Inorder: ";
+    cout << "Inorder Traversal: ";
     tree.inorder(tree.root);
     cout << endl;
 
-    cout << "Preorder: ";
+    cout << "Preorder Traversal: ";
     tree.preorder(tree.root);
     cout << endl;
 
-    cout << "Postorder: ";
+    cout << "Postorder Traversal: ";
     tree.postorder(tree.root);
     cout << endl;
 
-    
     int value;
-    cout << "Ingrese el valor a buscar: ";
+    cout << "Enter value to search: ";
     cin >> value;
     Node* result = tree.search(tree.root, value);
     if (result != nullptr){
-        cout << "El valor " << value << " fue encontrado" << endl;
+        cout << "Value " << value << " found in the tree." << endl;
     } else {
-        cout << "El valor " << value << " no fue encontrado" << endl;
+        cout << "Value " << value << " not found in the tree." << endl;
     }
 
-    cout << "Ingrese el valor a eliminar: ";
+    cout << "Enter value to delete: ";
     cin >> value;
     tree.root = tree.remove(tree.root, value);
-    cout << "Inorder: ";
+
+    cout << "Inorder Traversal after deletion: ";
     tree.inorder(tree.root);
     cout << endl;
     
